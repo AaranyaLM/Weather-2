@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php include "connection.php";?>
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,8 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
 </head>
 <body>
-
-
+    
     <div class="container">
 
         <div class="header">     

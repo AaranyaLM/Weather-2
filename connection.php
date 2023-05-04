@@ -7,5 +7,5 @@
     if (!$con) {
         die("Sorry, Connection failed: " . mysqli_connect_error());
       }
-
+    
 ?>
