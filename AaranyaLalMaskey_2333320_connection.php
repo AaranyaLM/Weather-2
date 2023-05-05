@@ -93,7 +93,7 @@ if ( isset($_GET['search']) )
 }
 
 if (!isset($_GET['passed_city_name'])) {
-    $cityName = "Aylesbury";
+    $cityName = "Aylesbury Vale";
 } 
 else  {
     $cityName = $_GET['passed_city_name'];
