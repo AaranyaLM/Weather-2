@@ -47,10 +47,10 @@ function entry($mysql,$data,$city){
         $sql = "INSERT INTO weather (id, cityname, temp, humidity, windspeed, description, main, pressure, feels_like, country, datetime) VALUES ($i+1, '$cityname', $temp, 0, 0, '0', '0', 0, 0, '0', '$datetime')";
         mysqli_query($mysql, $sql);
     }
-    retrive($mysql,$data,$Data);
+    retrive($mysql,$data);
 }
 
-function retrive($mysql,$data,$Data){
+function retrive($mysql,$data){
     global $city_name1, $temp1, $humidity1, $windspeed1, $description1, $main1, $pressure1, $feels_like1, $country1, $temp2;
     $sql="SELECT cityname FROM weather WHERE id=1";
     $row=mysqli_fetch_assoc(mysqli_query($mysql, $sql));
