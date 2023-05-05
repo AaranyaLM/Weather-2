@@ -85,61 +85,21 @@
             </div>
                
             <div class="weather-history">
+                <?php
+                for ($i=6; $i>=1; $i--) {
+                    $date = (new DateTime())->sub(new DateInterval('P'.$i.'D'))->format('Y-m-d');
+                ?>
                 <div class="day">
                     <div class="item-title">
-                        <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
+                        <?php echo $date;?>
                     </div>
                     <div class="item-content">
-                        <?php echo $temp2[0]."°C"; ?>
+                        <?php echo $temp2[6 - $i]."°C"; ?>
                     </div>
                 </div>
-
-                <div class="day">
-                    <div class="item-title">
-                        <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
-                    </div>
-                    <div class="item-content">
-                    <?php echo $temp2[1]."°C";?>
-                    </div>
-                </div>
-
-                <div class="day">
-                    <div class="item-title">
-                        <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
-                    </div>
-                    <div class="item-content">
-                        <?php echo $temp2[3]."°C";?>
-                    </div>
-                </div>
-
-                <div class="day">
-                    <div class="item-title">
-                        <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
-                    </div>
-                    <div class="item-content">
-                        <?php echo $temp2[4]."°C";?>
-                    </div>
-                </div>
-
-                <div class="day">
-                    <div class="item-title">
-                        <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
-                    </div>
-                    <div class="item-content">
-                        <?php echo $temp2[5]."°C";?>
-                    </div>
-                </div>
-
-                <div class="day">
-                    <div class="item-title">
-                        <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
-                    </div>
-                    <div class="item-content">
-                        <?php echo $temp2[6]."°C";?>
-                    </div>
-                </div>
-
+                <?php } ?>
             </div>
+
          </div>
         
         <div class="footer">

@@ -40,13 +40,15 @@ function entry($mysql,$data,$city){
         $data = file_get_contents($url);
         $data = json_decode($data, true);
     
-        $temp = $data['main']['temp'];
+        $temp_kelvin = $data['main']['temp'];
+        $temp_celsius = round($temp_kelvin - 273.15, 2);
         $cityname = $data['name'];
         $datetime = date('Y-m-d H:i:s', $data['dt']);
     
-        $sql = "INSERT INTO weather (id, cityname, temp, humidity, windspeed, description, main, pressure, feels_like, country, datetime) VALUES ($i+1, '$cityname', $temp, 0, 0, '0', '0', 0, 0, '0', '$datetime')";
+        $sql = "INSERT INTO weather (id, cityname, temp, humidity, windspeed, description, main, pressure, feels_like, country, datetime) VALUES ($i+1, '$cityname', $temp_celsius, 0, 0, '0', '0', 0, 0, '0', '$datetime')";
         mysqli_query($mysql, $sql);
     }
+    
     retrive($mysql,$data);
 }
 
