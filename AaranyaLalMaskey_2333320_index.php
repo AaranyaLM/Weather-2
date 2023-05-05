@@ -1,9 +1,12 @@
-<?php include "AaranyaLalMaskey_2333320_connection.php";?>
+<?php
+    include "AaranyaLalMaskey_2333320_connection.php"
+?>
+
 <html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"    content="width=device-width, initial-scale=1.0">
     <title>Weather Boy</title>
     <script src="https://kit.fontawesome.com/1ae1db6a1d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
@@ -11,27 +14,28 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css">
 </head>
 <body>
-    
+
     <div class="container">
 
         <div class="header">     
             <div class="search-container">
                 <form method="GET" action="AaranyaLalMaskey_2333320_connection.php">
-                    <input type="search" id="search" name="search" placeholder="Search your City">
+                    <input type="text" id="search" name="search" placeholder="Search your City">
                 </form>
                 
             </div>
         </div>   
 
         <div class="title" id="title">
-            <h1>KTM</h1>
-            <h2>2nd ap</h2>
+            <h1><?php echo $cityName?></h1>
         </div>
          <div class="weather-container">
             <div class="content" id="weather">
                 <div class="row-1">
-                    <img src="https://openweathermap.org/img/wn/<?php $main1?>@2x.png">
-
+                   <?php
+                        $iconUrl = "http://openweathermap.org/img/w/$main1.png";
+                        echo "<img src='$iconUrl'>";
+                    ?>
                     <div class="item-title"><?php echo $description1 ?></div>
                 </div>
             
@@ -53,7 +57,7 @@
                             Pressure
                         </div>
                         <div class="item-content">
-                        <?php echo "Pressure: " . $pressure1 . " hPa";?>
+                        <?php echo $pressure1 . " hPa";?>
                         </div>
                     </div>
             
@@ -63,7 +67,7 @@
                             Windspeed
                         </div>
                         <div class="item-content">
-                            2km/h
+                            <?php echo $windspeed1 . " Km/h";?>
                         </div>
                     </div>
             
@@ -73,7 +77,7 @@
                             Humidity
                         </div>
                         <div class="item-content">
-                            2%
+                        <?php echo  $humidity1 . "%"; ?>
                         </div>
                     </div>
             
@@ -86,7 +90,7 @@
                         <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
                     </div>
                     <div class="item-content">
-                        2°C
+                        <?php echo $temp2[0]."°C"; ?>
                     </div>
                 </div>
 
@@ -95,7 +99,7 @@
                         <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
                     </div>
                     <div class="item-content">
-                        Weather | 2°C
+                    <?php echo $temp2[1]."°C";?>
                     </div>
                 </div>
 
@@ -104,7 +108,7 @@
                         <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
                     </div>
                     <div class="item-content">
-                        Weather | 2°C
+                        <?php echo $temp2[3]."°C";?>
                     </div>
                 </div>
 
@@ -113,7 +117,7 @@
                         <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
                     </div>
                     <div class="item-content">
-                        Weather | 2°C
+                        <?php echo $temp2[4]."°C";?>
                     </div>
                 </div>
 
@@ -122,7 +126,7 @@
                         <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
                     </div>
                     <div class="item-content">
-                        Weather | 2°C
+                        <?php echo $temp2[5]."°C";?>
                     </div>
                 </div>
 
@@ -131,18 +135,10 @@
                         <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
                     </div>
                     <div class="item-content">
-                        Weather | 2°C
+                        <?php echo $temp2[6]."°C";?>
                     </div>
                 </div>
 
-                <div class="day">
-                    <div class="item-title">
-                        <?php echo (new DateTime())->sub(new DateInterval('P1D'))->format('Y-m-d');?>
-                    </div>
-                    <div class="item-content">
-                       Weather | 2°C
-                    </div>
-                </div>
             </div>
          </div>
         
