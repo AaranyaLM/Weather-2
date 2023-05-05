@@ -1,6 +1,6 @@
 <?php
 function city($city){
-    $url = "https://api.openweathermap.org/data/2.5/weather?q=" . $city . "&units=metric&appid=9b6d0aa88d6f133dc229ec48ec83c0fe";
+    $url = "https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=9b6d0aa88d6f133dc229ec48ec83c0fe&units=metric";
     $data = file_get_contents($url);
     $data = json_decode($data, true);
     conmysql($data,$city);
