@@ -34,18 +34,19 @@ function entry($mysql,$data,$city){
     mysqli_query($mysql,$sql3);
     mysqli_query($mysql,$sql);
     for ($i=1; $i<=7; $i++) {
-        $end_date=(new DateTime())->sub(new DateInterval('P'.($i-1).'D'))->format('Y-m-d');
-        $start_date = (new DateTime())->sub(new DateInterval('P'.$i.'D'))->format('Y-m-d');
-        $urlhis="https://api.weatherbit.io/v2.0/history/daily?city=" . $city . "&start_date=".$start_date."&end_date=".$end_date."&key=2c573df600fd49a7a2418ffc76978e17";
-        $Data = file_get_contents($urlhis);
-        $Data = json_decode($Data, true);
-        $temp=$Data['data'][0]['temp'];
-        $cityname=$Data['city_name'];
-        $datetime=$Data['data'][0]['datetime'];
-        $sql = "INSERT INTO weather (id, cityname, temp, humidity, windspeed, description, main, pressure, feels_like, country, datetime) VALUES ($i+1, '$cityname', $temp, 0, 0, '0', '0', 0, 0, '0', '$datetime')";
-        mysqli_query($mysql,$sql);
-    }
+        $date = (new DateTime())->sub(new DateInterval('P'.$i.'D'))->format('Y-m-d');
+        $url = "https://api.openweathermap.org/data/2.5/weather?q=$city&appid=9b6d0aa88d6f133dc229ec48ec83c0fe&dt=$date";
     
+        $data = file_get_contents($url);
+        $data = json_decode($data, true);
+    
+        $temp = $data['main']['temp'];
+        $cityname = $data['name'];
+        $datetime = date('Y-m-d H:i:s', $data['dt']);
+    
+        $sql = "INSERT INTO weather (id, cityname, temp, humidity, windspeed, description, main, pressure, feels_like, country, datetime) VALUES ($i+1, '$cityname', $temp, 0, 0, '0', '0', 0, 0, '0', '$datetime')";
+        mysqli_query($mysql, $sql);
+    }
     retrive($mysql,$data,$Data);
 }
 
